@@ -14,7 +14,7 @@ class MyClient(discord.Client):
     # # # # # # # # # # # #
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
         """Gives a role based on a reaction emoji."""
-        
+
         ### VALORANT
         if payload.message_id == 1090166907556085891: # ID of the Message
             guild = self.get_guild(payload.guild_id)
@@ -46,7 +46,7 @@ class MyClient(discord.Client):
     # # # # # # # # # # #
     async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
         """Removes a role based on a reaction emoji."""
-        
+
         ### VALORANT
         if payload.message_id == 1090166907556085891: # ID of the Message
             guild = self.get_guild(payload.guild_id)
@@ -76,9 +76,10 @@ class MyClient(discord.Client):
                                 pass
 
 
+
 intents = discord.Intents.default()
 intents.members = True
 
-client = MyClient(intents=intents)
+client = MyClient(intents=intents, activity=discord.Activity(name="mit Bob", type=1))
 
 client.run('MTA4ODQ1NTI2ODc3OTcwMDMxNQ.GcIp_u.zslbIY_1T9VnNYsP3PWK_2Men-izfXPONafQoo')
