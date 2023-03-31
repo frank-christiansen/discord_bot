@@ -39,6 +39,18 @@ class MyClient(discord.Client):
                         except discord.HTTPException:
                             pass
 
+        ### AMONG US
+        if payload.message_id == 1090654473061413055: # ID of the Message
+            guild = self.get_guild(payload.guild_id)
+            if not guild is None:
+                if payload.emoji == discord.PartialEmoji(name='👍'):
+                    role = guild.get_role(1090653083895341228) # ID of the role
+                    if not role is None:
+                        try:
+                            await payload.member.add_roles(role)
+                        except discord.HTTPException:
+                            pass
+
 
 
     # # # # # # # # # # #
@@ -67,6 +79,20 @@ class MyClient(discord.Client):
             if not guild is None:
                 if payload.emoji == discord.PartialEmoji(name='👍'):                    
                     role = guild.get_role(1086363791291334737) # ID of the Role
+                    if not role is None:
+                        member = guild.get_member(payload.user_id)
+                        if not member is None:
+                            try:
+                                await member.remove_roles(role)
+                            except discord.HTTPException:
+                                pass
+
+        ### AMONG US
+        if payload.message_id == 1090654473061413055: # ID of the Message
+            guild = self.get_guild(payload.guild_id)
+            if not guild is None:
+                if payload.emoji == discord.PartialEmoji(name='👍'):                    
+                    role = guild.get_role(1090653083895341228) # ID of the Role
                     if not role is None:
                         member = guild.get_member(payload.user_id)
                         if not member is None:
