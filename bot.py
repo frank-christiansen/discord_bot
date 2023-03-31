@@ -6,65 +6,42 @@ class MyClient(discord.Client):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.emoji = discord.PartialEmoji(name='👍')
+        self.message_to_role = {
+            # message_id: role_id,
+            1090166907556085891: 1085330636392366130, # Valorant
+            1090184934112632873: 1086363791291334737, # Rust
+            1090654473061413055: 1090653083895341228, # Among Us
+            1091411120222392441: 1091386165589975101, # Call of Duty
+            1091411131005927535: 1091386409543290970, # Apex Legends
+            1091411241928499300: 1091386471023390871, # Minecraft
+            1091411422220648481: 1091386565097431141, # Schach
+            1091411443921977394: 1091386618478338119, # Pummelparty
+            1091411451027140722: 1091386693275353190, # League of Legends
+        }
 
-
-
-    # # # # # # # # # # # #
-    # Rollen hinzufuegen  #
-    # # # # # # # # # # # #
+    # Rollen hinzufuegen
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
         """Gives a role based on a reaction emoji."""
-
-        ### VALORANT
-        if payload.message_id == 1090166907556085891: # ID of the Message
+        if payload.message_id in self.message_to_role:
             guild = self.get_guild(payload.guild_id)
             if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):
-                    role = guild.get_role(1085330636392366130) # ID of the role
+                if payload.emoji == self.emoji:
+                    role = guild.get_role(self.message_to_role[payload.message_id])
                     if not role is None:
                         try:
                             await payload.member.add_roles(role)
                         except discord.HTTPException:
                             pass
 
-        ### RUST
-        if payload.message_id == 1090184934112632873: # ID of the Message
-            guild = self.get_guild(payload.guild_id)
-            if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):
-                    role = guild.get_role(1086363791291334737) # ID of the role
-                    if not role is None:
-                        try:
-                            await payload.member.add_roles(role)
-                        except discord.HTTPException:
-                            pass
-
-        ### AMONG US
-        if payload.message_id == 1090654473061413055: # ID of the Message
-            guild = self.get_guild(payload.guild_id)
-            if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):
-                    role = guild.get_role(1090653083895341228) # ID of the role
-                    if not role is None:
-                        try:
-                            await payload.member.add_roles(role)
-                        except discord.HTTPException:
-                            pass
-
-
-
-    # # # # # # # # # # #
-    # Rollen entfernen  #
-    # # # # # # # # # # #
+    # Rollen entfernen
     async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
         """Removes a role based on a reaction emoji."""
-
-        ### VALORANT
-        if payload.message_id == 1090166907556085891: # ID of the Message
+        if payload.message_id in self.message_to_role:
             guild = self.get_guild(payload.guild_id)
             if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):                    
-                    role = guild.get_role(1085330636392366130) # ID of the Role
+                if payload.emoji == self.emoji:
+                    role = guild.get_role(self.message_to_role[payload.message_id])
                     if not role is None:
                         member = guild.get_member(payload.user_id)
                         if not member is None:
@@ -72,36 +49,6 @@ class MyClient(discord.Client):
                                 await member.remove_roles(role)
                             except discord.HTTPException:
                                 pass
-
-        ### RUST
-        if payload.message_id == 1090184934112632873: # ID of the Message
-            guild = self.get_guild(payload.guild_id)
-            if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):                    
-                    role = guild.get_role(1086363791291334737) # ID of the Role
-                    if not role is None:
-                        member = guild.get_member(payload.user_id)
-                        if not member is None:
-                            try:
-                                await member.remove_roles(role)
-                            except discord.HTTPException:
-                                pass
-
-        ### AMONG US
-        if payload.message_id == 1090654473061413055: # ID of the Message
-            guild = self.get_guild(payload.guild_id)
-            if not guild is None:
-                if payload.emoji == discord.PartialEmoji(name='👍'):                    
-                    role = guild.get_role(1090653083895341228) # ID of the Role
-                    if not role is None:
-                        member = guild.get_member(payload.user_id)
-                        if not member is None:
-                            try:
-                                await member.remove_roles(role)
-                            except discord.HTTPException:
-                                pass
-
-
 
 intents = discord.Intents.default()
 intents.members = True
