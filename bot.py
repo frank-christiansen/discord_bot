@@ -57,4 +57,4 @@ intents.members = True
 
 client = MyClient(intents=intents, activity=discord.Activity(name="mit Bob", type=1))
 
-client.run('MTA4ODQ1NTI2ODc3OTcwMDMxNQ.GcIp_u.zslbIY_1T9VnNYsP3PWK_2Men-izfXPONafQoo')
+client.run('MTA4ODQ1NTI2ODc3OTcwMDMxNQ.GTJieG.W6K63QBQpu6UosU4mBu2DRs8zbCQwuxqUV8ydw')
