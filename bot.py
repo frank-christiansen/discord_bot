@@ -19,6 +19,7 @@ class MyClient(discord.Client):
             1091425383359983706: 1091386618478338119, # Pummelparty
             1091427331358326834: 1091386693275353190, # League of Legends
             1093167919799742654: 1093167182369796188, # Warframe
+            1092374453977104445: 1092372910020239412, # Sea of Thieves
         }
 
     # Rollen hinzufuegen
