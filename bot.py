@@ -18,6 +18,7 @@ class MyClient(discord.Client):
             1091422509758427207: 1091386565097431141, # Schach
             1091425383359983706: 1091386618478338119, # Pummelparty
             1091427331358326834: 1091386693275353190, # League of Legends
+            1093167919799742654: 1093167182369796188, # Warframe
         }
 
     # Rollen hinzufuegen
