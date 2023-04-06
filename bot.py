@@ -1,6 +1,7 @@
 # This Bot requires the 'members' privileged intents
 
 import discord
+import os
 
 class MyClient(discord.Client):
 
@@ -57,4 +58,4 @@ intents.members = True
 
 client = MyClient(intents=intents, activity=discord.Activity(name="mit Bob", type=1))
 
-client.run('MTA4ODQ1NTI2ODc3OTcwMDMxNQ.GTJieG.W6K63QBQpu6UosU4mBu2DRs8zbCQwuxqUV8ydw')
+client.run(os.getenv("TOKEN"))
