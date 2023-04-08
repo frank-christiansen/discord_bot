@@ -2,10 +2,14 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN apt-get update
+RUN apt-get install -y git
 
-COPY bot.py bot.py
+RUN git clone https://github.com/frank-christiansen/discord_bot.git
+
+WORKDIR /app/discord_bot
+
+RUN pip3 install -r requirements.txt
 
 CMD ["python3", "bot.py"]
 

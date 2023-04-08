@@ -21,6 +21,7 @@ class MyClient(discord.Client):
             1091427331358326834: 1091386693275353190, # League of Legends
             1093167919799742654: 1093167182369796188, # Warframe
             1092374453977104445: 1092372910020239412, # Sea of Thieves
+            1094259588041289778: 1094257982432362506, # Diablo
         }
 
     # Rollen hinzufuegen
