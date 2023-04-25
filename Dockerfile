@@ -1,17 +1,14 @@
-FROM python:3.8-slim-buster
+FROM python:3.8-slim
 
 WORKDIR /app
 
-RUN apt-get update
-RUN apt-get install -y git
+COPY bot.py /app/bot.py
 
-RUN git clone https://github.com/frank-christiansen/discord_bot.git
+VOLUME ["/config"]
 
-WORKDIR /app/discord_bot
+RUN pip install discord.py
 
-RUN pip3 install -r requirements.txt
-
-CMD ["python3", "bot.py"]
+CMD ["python", "/app/bot.py"]
 
 # docker build --no-cache --tag kleinundhilflos_bot .
 # docker image tag kleinundhilflos_bot kleinundhilflos/discord_bot
