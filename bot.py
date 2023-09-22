@@ -29,6 +29,7 @@ class MyClient(discord.Client):
             1154852778850668726: 1154852833145913344, # Dead by Daylight
             1154854686470447124: 1154854757152870401, # Counter Strike
             1154857107397558332: 1154856023887187988, # ARK
+            1154865594932416632: 1154863935443447839, # Feuerwehr
         }
 
     # Rollen hinzufuegen
